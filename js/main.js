@@ -186,9 +186,10 @@ document.getElementById("apply-button").addEventListener("click", function () {
 function inputField() {
 	const promoCode = document.getElementById('promoCode');
 	if (promoCode.value == "stevekaku") {
-		const total = document.getElementById('totalPrice2');
+		const total = document.getElementById('totalPrice-1');
+		const total2 = document.getElementById('totalPrice2');
 		const totalNumber = Number(total.innerText);
-		total.innerText = totalNumber * .2;
+		total2.innerText = totalNumber * .2;
 		document.getElementById('cupon').classList.remove("cupon-error-show");
 		promoCode.value = "";
 	} else {
