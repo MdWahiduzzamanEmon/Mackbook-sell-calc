@@ -3,13 +3,10 @@ const memoryButton1 = document.getElementById("memoryButton-1");
 const memoryButton2 = document.getElementById("memoryButton-2");
 
 memoryButton1.addEventListener('click', function () {
-    console.log("clicked")
     memoryCost(0)
 })
 memoryButton2.addEventListener('click', function () {
-    console.log("clicked")
     memoryCost(180);
-    
 })
 
 // storageButton
@@ -18,15 +15,12 @@ const storageButton2 = document.getElementById("storageButton-2");
 const storageButton3 = document.getElementById("storageButton-3");
 
 storageButton1.addEventListener('click', function () {
-    console.log("clicked")
     extraStorageCost(0);
 })
 storageButton2.addEventListener('click', function () {
-    console.log("clicked");
-    extraStorageCost(100,20);
+    extraStorageCost(100);
 })
 storageButton3.addEventListener('click', function () {
-    console.log("clicked")
     extraStorageCost(180);
 })
 // deliveryButton
@@ -34,11 +28,9 @@ const deliveryButton1 = document.getElementById("deliveryButton-1");
 const deliveryButton2 = document.getElementById("deliveryButton-2");
 
 deliveryButton1.addEventListener('click', function () {
-    console.log("clicked")
     deliveryCost(0);
 })
 deliveryButton2.addEventListener('click', function () {
-    console.log("clicked")
     deliveryCost(20);
 })
 
@@ -76,7 +68,7 @@ function memoryCost(price) {
 }
 
 
-function extraStorageCost(price,prices) {
+function extraStorageCost(price) {
     // mainPrice 
     const mainPrice = document.getElementById("mainPrice");
     const mainPriceValue = Number(mainPrice.innerText);
@@ -91,7 +83,7 @@ function extraStorageCost(price,prices) {
 
   const extraMemoryCost = document.getElementById("extraMemoryCost");
         
-   
+   //extra storage price add
     if (extraMemoryCost.innerText == 180) {
         const extraMemoreyValue = extraMemoryCost.innerText;
         
@@ -102,14 +94,13 @@ function extraStorageCost(price,prices) {
     
 }
 
-
+// delivery cost 
 
 function deliveryCost(price) {
     const deliveryCost = document.getElementById('deliveryCost');
-    const deliveryCostText = deliveryCost.innerText;
     deliveryCost.innerText = price;
 
-    if (deliveryCost.innerText != 0) {
+    if (deliveryCost.innerText == 20) {
         
         const mainPrice = document.getElementById("mainPrice");
         const mainPriceValue = Number(mainPrice.innerText);
@@ -119,25 +110,36 @@ function deliveryCost(price) {
 
         const extraStorageCost = document.getElementById("extraStorageCost");
         const extraMemoryCost = document.getElementById("extraMemoryCost");
+        // main price with delivery cost 
         if (mainPrice.innerText == 1299) {
-            totalPrice1.innerText = Number(mainPrice.innerText) * .2;
+            totalPrice1.innerText = Number(mainPrice.innerText)+price;
         }
+        // extra memory price with delivery cost
         if (extraMemoryCost.innerText == 180) {
             const extraMemoryValue = extraMemoryCost.innerText;
         
             const withExtraMemory = mainPriceValue + Number(extraMemoryValue);
-            totalPrice1.innerText = withExtraMemory * 0.2;
+            totalPrice1.innerText = withExtraMemory+price;
 
-            document.getElementById('totalPrice2').innerText = withExtraMemory * 0.2;
+            document.getElementById('totalPrice2').innerText = withExtraMemory + price;
         }
+        // extra storage price  delivery cost
         if (extraStorageCost.innerText == 100 || extraStorageCost.innerText == 180) {
-            totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText)) * .2;
-            document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText)) * .2;
+            totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText))+price;
+            document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText)) +price;
         }
-        if (extraStorageCost.innerText == 100 || extraStorageCost.innerText == 180 && extraMemoryCost.innerText == 180 && mainPrice.innerText == 1299) {
-            totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText)) * .2;
+        if (mainPrice.innerText == 1299 && extraMemoryCost.innerText == 180 && extraStorageCost.innerText == 100) {
+            totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText)) + price;
+            
+            document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText))+price;
+        }
 
-            document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText)) * .2;
+        //main price,extra memory price and extra storage price
+
+        if ( extraStorageCost.innerText == 180 && extraMemoryCost.innerText == 180 && mainPrice.innerText == 1299) {
+            totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText))+price;
+
+            document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText))+price;
         }
     
     } else {
@@ -164,10 +166,31 @@ function deliveryCost(price) {
             totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText));
             document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText));
         }
-        if (extraStorageCost.innerText == 100 || extraStorageCost.innerText == 180 && extraMemoryCost.innerText == 180 && mainPrice.innerText == 1299) {
+        if (mainPrice.innerText == 1299 && extraMemoryCost.innerText == 180 && extraStorageCost.innerText == 100) {
+            totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
+            
+            document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
+        }
+        if ( extraStorageCost.innerText == 180 && extraMemoryCost.innerText == 180 && mainPrice.innerText == 1299) {
             totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
             document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
         }
     }
      
+}
+// promoCode 
+document.getElementById("apply-button").addEventListener("click", function () {
+    inputField();
+})
+function inputField() {
+    const promoCode = document.getElementById('promoCode');
+    if (promoCode.value == "stevekaku") {
+        const total = document.getElementById('totalPrice2');
+        const totalNumber = Number(total.innerText);
+        total.innerText = totalNumber * .2;
+        document.getElementById('cupon').classList.remove("cupon-error-show");
+        promoCode.value = "";
+    } else {
+        document.getElementById('cupon').classList.add("cupon-error-show");
+    }
 }
