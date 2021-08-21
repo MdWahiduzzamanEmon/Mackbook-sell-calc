@@ -156,7 +156,7 @@ function inputField() {
 		const total = document.getElementById('totalPrice-1');
 		const total2 = document.getElementById('totalPrice2');
 		const totalNumber = Number(total.innerText);
-		total2.innerText = totalNumber * .2;
+		total2.innerText = totalNumber-(totalNumber * .2);
 		document.getElementById('cupon').classList.remove("cupon-error-show");
 		promoCode.value = "";
 	} else {
