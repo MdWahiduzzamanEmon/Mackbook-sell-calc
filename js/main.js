@@ -100,7 +100,7 @@ function deliveryCost(price) {
 	const deliveryCost = document.getElementById('deliveryCost');
 	deliveryCost.innerText = price;
 
-	if (deliveryCost.innerText == 20) {
+	if (deliveryCost.innerText == price) {
 
 		const mainPrice = document.getElementById("mainPrice");
 		const mainPriceValue = Number(mainPrice.innerText);
@@ -142,39 +142,6 @@ function deliveryCost(price) {
 			document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText)) + price;
 		}
 
-	} else {
-		const mainPrice = document.getElementById("mainPrice");
-		const mainPriceValue = Number(mainPrice.innerText);
-
-		const totalPrice1 = document.getElementById("totalPrice-1");
-
-
-		const extraStorageCost = document.getElementById("extraStorageCost");
-		const extraMemoryCost = document.getElementById("extraMemoryCost");
-		if (mainPrice.innerText == 1299) {
-			totalPrice1.innerText = Number(mainPrice.innerText);
-		}
-		if (extraMemoryCost.innerText == 180) {
-			const extraMemoryValue = extraMemoryCost.innerText;
-
-			const withExtraMemory = mainPriceValue + Number(extraMemoryValue);
-			totalPrice1.innerText = withExtraMemory;
-
-			document.getElementById('totalPrice2').innerText = withExtraMemory;
-		}
-		if (extraStorageCost.innerText == 100 || extraStorageCost.innerText == 180) {
-			totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText));
-			document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText));
-		}
-		if (mainPrice.innerText == 1299 && extraMemoryCost.innerText == 180 && extraStorageCost.innerText == 100) {
-			totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
-
-			document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
-		}
-		if (extraStorageCost.innerText == 180 && extraMemoryCost.innerText == 180 && mainPrice.innerText == 1299) {
-			totalPrice1.innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
-			document.getElementById('totalPrice2').innerText = (mainPriceValue + Number(extraStorageCost.innerText) + Number(extraMemoryCost.innerText));
-		}
 	}
 
 }
